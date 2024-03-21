@@ -10,10 +10,11 @@ async function checkwheather() {
     let reponse = await fetch(apilink + searchInput + `&appid=${apikey}`);
     if (reponse.status == 404) {
         document.querySelector(".invalid").style.display = "block";
+        document.querySelector(".divv").style.display = "none";
     }
     else {
         let data = await reponse.json();
-        
+
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + `°C`;
         document.querySelector(".humidity").innerHTML = data.main.humidity;
